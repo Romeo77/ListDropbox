@@ -8,7 +8,8 @@
 
 #import "DropboxViewController.h"
 
-@interface DropboxViewController ()
+@interface DropboxViewController ()<UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -16,22 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    NSURL *url = [NSURL URLWithString:@"https://www.dropbox.com/s/w76lwg4jof3mp34/filik.html?dl=1"];
+    NSURLRequest *requestUrl = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:requestUrl];
+    
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
